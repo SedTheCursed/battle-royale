@@ -11,5 +11,5 @@ Ceci est un petit jeu, codé en Ruby, dans le cadre de la troisième semaine de 
 
 ### Programme réalisé par Cédric Robert(@Cedric Robert)
 
-__Let's get ready to rumble!!! 
+## __Let's get ready to rumble!!! 
 and Have fun!__
