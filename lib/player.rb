@@ -1,5 +1,6 @@
 class Player
-  #attr_reader a été choisi plutôt que accessor, car les propriétés n'ont pas besoin d'être changé en dehors de l'objet.
+  # attr_reader a été choisi plutôt que accessor, car les propriétés n'ont pas
+  # besoin d'être changé en dehors de l'objet.
   attr_reader :name, :health_points 
 
   def initialize(name)
@@ -30,7 +31,9 @@ class Player
 end
 
 class HumanPlayer < Player
-  attr_reader :weapon_level
+  # weapon_level n'ayant pas besoin d'être accessible en dehors de la classe
+  # HumanPlayer, il ne fait l'objet d'aucun attr
+  
   def initialize(name)
     super(name)
     
@@ -53,6 +56,8 @@ class HumanPlayer < Player
     end
   end
 
+  # Si un health_pack est trouvé, il soigne un nombre de point de vie fixe,
+  # ou permet de retrouver sa santé maximale
   def search_health_pack
     result = rand(1..6)
     case result

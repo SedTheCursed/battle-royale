@@ -4,9 +4,11 @@ Bundler.require
 require_relative 'lib/game'
 require_relative 'lib/player'
 
+# Creation des PNJ
 player1 = Player.new("Josiane")
 player2 = Player.new("José")
 
+# Tant que les deux combattant sont debouts, on montre leur etat et ils s'affrontent.
 while player1.health_points > 0 && player2.health_points > 0
   puts "\nVoici l'etat de chaque joueuer :"
   puts player1.show_state
@@ -19,5 +21,6 @@ while player1.health_points > 0 && player2.health_points > 0
   puts '-' * 30 + "\n"
 end
 
-winner = player1.health_points > player2.health_points ? player1 : player2
+# Determination du vainquer et affichage de son nom.
+winner = player1.health_points > 0 ? player1 : player2
 puts "\n#{winner.name} est le vainqueur !"
