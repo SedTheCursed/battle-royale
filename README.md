@@ -1,1 +1,3 @@
-##Ceci est un project Ruby
+# :goberserk: Battle Royale :goberserk:
+
+## Ceci est un project Ruby
