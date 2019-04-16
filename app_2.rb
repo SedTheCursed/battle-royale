@@ -46,10 +46,10 @@ end
 # Crée le menu de choix du PJ
 def menu(npcs)
   puts "Quelle action veux-tu effectuer ?\n\n"
-  puts "a - chercher une meilleure arme"
-  puts "s - chercher à se soigner" 
+  puts 'a - chercher une meilleure arme'
+  puts 's - chercher à se soigner' 
   puts "\n"
-  puts "attaquer un joueur en vue :"
+  puts 'attaquer un joueur en vue :'
   npcs.length.times { |index| puts "#{index} - #{npcs[index].show_state}"}
   puts "\n"
   print '> '
@@ -67,7 +67,7 @@ def pc_action(choice, pc, npcs)
     pc.attacks(npcs[choice.to_i])
   # si aucun choix valide est donné, le PJ perd son tour
   else
-    puts "Tu es incapable d'agir."
+    puts 'Tu es incapable d\'agir.'
   end
   puts "\n\n"
   gets.chomp
@@ -97,7 +97,7 @@ end
 # tant qu'il reste des PNJ et que le PJ est vivant, avant d'afficher le message
 # de fin de partie.
 def main_game(pc, npcs)
-  while !living_npcs(npcs).empty? && pc.health_points > 0
+  while !living_npcs(npcs).empty? && pc.health_points.positive?
     puts border
     pc.show_state
     puts border + "\n\n"
@@ -106,8 +106,12 @@ def main_game(pc, npcs)
     npcs_action(pc, npcs)
   end
 
-  puts "Cela fut un beau combat !"
-  puts pc.health_points > 0 ? "Et #{pc.name} en a emergé vainqueur ! Felicitations à lui !" : "Hélas, #{pc.name} a été vaincu et son corps va rejoindre la fosse commune."
+  puts 'Cela fut un beau combat !'
+  if pc.health_points.positive?
+    puts "Et #{pc.name} en a emergé vainqueur ! Felicitations à lui !"
+  else
+    puts "Hélas, #{pc.name} a été vaincu et son corps va rejoindre la fosse commune."
+  end
 end
 
 header

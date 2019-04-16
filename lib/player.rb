@@ -1,7 +1,7 @@
 class Player
   # attr_reader a été choisi plutôt que accessor, car les propriétés n'ont pas
   # besoin d'être changé en dehors de l'objet.
-  attr_reader :name, :health_points 
+  attr_reader :name, :health_points
 
   def initialize(name)
     @name = name
@@ -9,7 +9,11 @@ class Player
   end
 
   def show_state
-    @health_points > 0 ? "#{@name.capitalize} a #{@health_points} points de vie." : "#{@name} est mort."
+    if @health_points.positive?
+      "#{@name.capitalize} a #{@health_points} points de vie."
+    else
+      "#{@name} est mort."
+    end
   end
 
   def gets_damage(damage)
@@ -25,34 +29,39 @@ class Player
   end
 
   private
+
   def compute_damage
-    return rand(1..6)
+    rand(1..6)
   end
 end
 
 class HumanPlayer < Player
   # weapon_level n'ayant pas besoin d'être accessible en dehors de la classe
   # HumanPlayer, il ne fait l'objet d'aucun attr
-  
+
   def initialize(name)
     super(name)
-    
+
     @health_points = 100
     @weapon_level = 1
   end
 
   def show_state
-    puts @health_points > 0 ? "Tu as #{@health_points} points de vie et une arme de niveau #{@weapon_level}." : "Tu es mort."
+    if @health_points.positive?
+      "Tu as #{@health_points} points de vie et une arme de niveau #{@weapon_level}."
+    else
+      'Tu es mort.'
+    end
   end
 
   def search_weapon
     level = rand(1..6)
     puts "\nTu as trouvé une arme de niveau #{level}"
     if level > @weapon_level
-      puts "Comme elle est meilleure que la tienne, tu la gardes."
+      puts 'Comme elle est meilleure que la tienne, tu la gardes.'
       @weapon_level = level
     else
-      puts "Mais comme elle est rouillée, tu conserves ton arme actuelle."
+      puts 'Mais comme elle est rouillée, tu conserves ton arme actuelle.'
     end
   end
 
@@ -73,6 +82,7 @@ class HumanPlayer < Player
   end
 
   private
+
   def compute_damage
     rand(1..6) * @weapon_level
   end

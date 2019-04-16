@@ -10,7 +10,7 @@ def border
   '-' * 50
 end
 
-# Créé une ligne du cartouche avec le texte centré 
+# Créé une ligne du cartouche avec le texte centré
 def line(message = '')
   '| ' + message.center(46) + ' |'
 end
