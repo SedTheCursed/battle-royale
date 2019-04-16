@@ -49,7 +49,7 @@ class HumanPlayer < Player
       puts "Comme elle est meilleure que la tienne, tu la gardes."
       @weapon_level = level
     else
-      puts "Mais comme elle est rouillée, elle conserve ton arme actuelle."
+      puts "Mais comme elle est rouillée, tu conserves ton arme actuelle."
     end
   end
 
